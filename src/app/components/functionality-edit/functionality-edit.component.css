@@ -1,0 +1,83 @@
+/* Resetowanie domyślnych styli dla formularza */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Kontener formularza */
+.form-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Nagłówek */
+.form-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Grupa pól formularza */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Etykiety pól formularza */
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+/* Pola tekstowe i pola wyboru */
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Przycisk "Submit" */
+.form-group button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+/* Dodanie ikonki przed tekstem przycisku */
+.form-group button[type="submit"]::before {
+  content: "";
+  display: inline-block;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 6px 8px 6px 0;
+  border-color: transparent #ffffff transparent transparent;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+/* Dodanie miejsca na ikonkę przed tekstem przycisku */
+.form-group button[type="submit"] span {
+  padding-left: 24px;
+}
+
+/* Efekt hover dla przycisku */
+.form-group button[type="submit"]:hover {
+  background-color: #45a049;
+}
