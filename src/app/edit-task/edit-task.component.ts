@@ -47,7 +47,7 @@ export class EditTaskComponent implements OnInit {
       name:[this.taskToEdit.name,Validators.required],
       description:[this.taskToEdit.description,Validators.required],
       priority:[this.taskToEdit.priority,Validators.required],
-      status: [this.taskToEdit.state, Validators.required],
+      state: [this.taskToEdit.state, Validators.required],
       startDate: [this.taskToEdit.startDate,Validators.required],
       endDate:[this.taskToEdit.endDate,Validators.required]
     })
@@ -66,6 +66,7 @@ export class EditTaskComponent implements OnInit {
 
   saveUpdatedTask()
   {
+    console.log(this.taskToEdit.state)
     this.update()
     this.taskService.updateTask(this.taskToEdit).subscribe(()=>{
        this.router.navigate(["/functionalities", this.taskToEdit.functionalityID])
