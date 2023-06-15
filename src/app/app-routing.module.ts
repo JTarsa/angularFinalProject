@@ -7,6 +7,7 @@ import { UserProjectsComponent } from './components/user-projects/user-projects.
 import { TaskListComponent } from './components/task-list/task-list.component';
 import { TaskFormComponent } from './components/task-form/task-form.component';
 import { FunctionalityEditComponent } from './components/functionality-edit/functionality-edit.component';
+import { EditTaskComponent } from './edit-task/edit-task.component';
 const routes: Routes = [
   { path: '', component: UserProjectsComponent },
   { path: 'functionalities', component: FunctionalityListComponent },
@@ -17,6 +18,10 @@ const routes: Routes = [
     path: 'functionality/edit/:id',
     component: FunctionalityEditComponent,
   },
+  {
+    path: "task/edit/:id",
+    component: EditTaskComponent
+  }
 ];
 
 @NgModule({

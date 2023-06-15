@@ -61,7 +61,7 @@ export class TaskListComponent implements OnInit {
   }
 
   showTaskDetails(ID: string) {
-    // Implementacja wyświetlania szczegółów zadania
+    this.router.navigate(['/task/edit',ID])
   }
 
   addTask() {

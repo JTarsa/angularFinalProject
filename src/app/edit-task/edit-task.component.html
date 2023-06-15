@@ -1,0 +1,45 @@
+<form [formGroup]="taskFormGroup" class="form-container">
+    <div>
+        <h1>Edit Task</h1>
+        <div class="form-group">
+            <label for="name">Name</label>
+            <input 
+            formControlName="name"
+            type="text">
+        </div>
+        <div class="form-group">
+            <label for="description">Description</label>
+            <input 
+            formControlName="description"
+            type="text">
+        </div>
+        <div class="form-group">
+            <label for="priority">Priority</label>
+            <input 
+            formControlName="priority"
+            type="text">
+        </div>
+        <div class="form-group">
+            <label for="status">Status</label>
+            <select id="status" name="status" required formControlName="status">
+              <option *ngFor="let value of workStatusValues" [value]="value">
+                {{ value }}
+              </option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="startDate">StartDate</label>
+            <input 
+            formControlName="startDate"
+            type="date">
+        </div> 
+        <div class="form-group">
+            <label for="endDate">endDate</label>
+            <input 
+            formControlName="endDate"
+            type="date">
+        </div> 
+        <button (click)="saveUpdatedTask()" type="submit"
+        >EDIT</button>
+    </div>
+</form>

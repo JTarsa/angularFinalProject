@@ -9,6 +9,7 @@ import { FunctionalityListComponent } from './components/functionality-list/func
 import { TaskListComponent } from './components/task-list/task-list.component';
 import { TaskFormComponent } from './components/task-form/task-form.component';
 import { FunctionalityEditComponent } from './components/functionality-edit/functionality-edit.component';
+import { EditTaskComponent } from './edit-task/edit-task.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { FunctionalityEditComponent } from './components/functionality-edit/func
     TaskListComponent,
     TaskFormComponent,
     FunctionalityEditComponent,
+    EditTaskComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],

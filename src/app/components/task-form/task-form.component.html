@@ -40,16 +40,10 @@
       </div>
       <div class="input-group">
         <label for="status">Status</label>
-        <select
-          id="status"
-          name="status"
-          required
-          class="form-control"
-          [(ngModel)]="taskForm.value.status"
-        >
-          <option value="In Progress">In Progress</option>
-          <option value="Completed">Completed</option>
-          <option value="On Hold">On Hold</option>
+        <select id="status" name="status" required formControlName="status">
+          <option *ngFor="let value of workStatusValues" [value]="value">
+            {{ value }}
+          </option>
         </select>
       </div>
       <div class="input-group">
