@@ -1,17 +1,30 @@
-<form class="form-container">
+<form class="form-container" [formGroup]="functionalityForm">
   <div>
     <h1>Edit functionality</h1>
     <div class="form-group">
       <label for="title">Title</label>
-      <input type="text" id="title" name="title" required />
+      <input
+        formControlName="name"
+        type="text"
+        id="title"
+        name="title"
+        required
+        [value]="functionalityOptions.name"
+      />
     </div>
     <div class="form-group">
       <label for="description">Description</label>
-      <input type="text" id="description" name="description" required />
+      <input
+        formControlName="description"
+        type="text"
+        id="description"
+        name="description"
+        [value]="functionalityOptions.description"
+      />
     </div>
     <div class="form-group">
       <label for="priority">Priority</label>
-      <select id="priority" name="priority" required>
+      <select id="priority" name="priority" required formControlName="priority">
         <option value="low">Low</option>
         <option value="medium">Medium</option>
         <option value="high">High</option>
@@ -19,20 +32,35 @@
     </div>
     <div class="form-group">
       <label for="status">Status</label>
-      <select id="status" name="status" required>
-        <option value="pending">Pending</option>
-        <option value="in progress">In Progress</option>
-        <option value="completed">Completed</option>
+      <select id="status" name="status" required formControlName="status">
+        <option *ngFor="let value of workStatusValues" [value]="value">
+          {{ value }}
+        </option>
       </select>
     </div>
     <div class="form-group">
       <label for="startDate">Start date</label>
-      <input type="date" id="startDate" name="startDate" min="Date.now()" required />
+      <input
+        type="date"
+        id="startDate"
+        name="startDate"
+        min="Date.now()"
+        formControlName="startDate"
+        required
+      />
     </div>
     <div class="form-group">
       <label for="endDate">End date</label>
-      <input type="date" id="endDate" name="endDate" required />
+      <input
+        type="date"
+        id="endDate"
+        name="endDate"
+        required
+        formControlName="endDate"
+      />
     </div>
-    <button type="submit">Edit functionality</button>
+    <button (click)="editFunctionality()" type="submit">
+      Edit functionality
+    </button>
   </div>
 </form>
