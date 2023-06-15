@@ -3,6 +3,7 @@ import { TaskInterface } from '../interfaces/task.interface';
 import { FunctionalityInterface } from '../interfaces/functionality.interface';
 import { Observable, of } from 'rxjs';
 import { WorkStatus } from '../enums/workStatus.enum';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -85,6 +86,10 @@ export class TaskService {
       taskToUpdate.assignedUser = task.assignedUser;
       taskToUpdate.functionalityID = task.functionalityID; // Aktualizacja pola functionalityID
       taskToUpdate.functionality = task.functionality; // Aktualizacja pola functionality
+
+      taskToUpdate.functionality = Object.assign({}, task.functionality);
+
+
       this.saveDataToLocalStorage();
       return of(taskToUpdate);
     } else {

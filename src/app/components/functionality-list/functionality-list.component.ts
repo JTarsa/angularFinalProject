@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FunctionalityInterface } from 'src/app/interfaces/functionality.interface';
 import { TaskInterface } from 'src/app/interfaces/task.interface';
 import { WorkStatus } from 'src/app/enums/workStatus.enum';
+import { TaskService } from 'src/app/services/task.service';
 @Component({
   selector: 'app-functionality-list',
   templateUrl: './functionality-list.component.html',
@@ -11,9 +12,12 @@ import { WorkStatus } from 'src/app/enums/workStatus.enum';
 })
 export class FunctionalityListComponent implements OnInit {
   functionality: FunctionalityInterface[] = [];
+  tasksF: TaskInterface[] = []
+  allTasks: TaskInterface[] = []
 
   constructor(
     private functionalityService: FunctionalityService,
+    private taskService : TaskService,
     private router: Router
   ) {
     this.functionalityService
@@ -22,6 +26,8 @@ export class FunctionalityListComponent implements OnInit {
         this.functionality = functionality;
         this.updateFunctionalityStatus();
       });
+
+     
   }
 
   ngOnInit(): void {
