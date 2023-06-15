@@ -1,7 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { TaskInterface } from "src/app/interfaces/task.interface";
 import { TaskService } from "src/app/services/task.service";
-import { Priority } from "src/app/enums/priority.enum";
 import { WorkStatus } from "src/app/enums/workStatus.enum";
 import {
   FormBuilder,
@@ -22,8 +21,8 @@ export class TaskFormComponent implements OnInit {
   tasks: TaskInterface[] = [];
   taskForm!: FormGroup;
   workStatusValues = Object.values(WorkStatus);
-  priorityValues = Object.values(Priority);
   functionalityList: FunctionalityInterface[] = [];
+  sf!: FunctionalityInterface
 
   constructor(
     private formBuilder: FormBuilder,
@@ -38,35 +37,28 @@ export class TaskFormComponent implements OnInit {
       value: currentDate,
       disabled: true,
     });
+    this.functionalityService.getFunctionalities().subscribe((f: FunctionalityInterface[])=>{
+      this.functionalityList = f
+    })
 
+    this.taskService.getTasks().subscribe((t:TaskInterface[])=>{
+      this.tasks = t
+    })
     this.taskForm = this.formBuilder.group({
       name: ["", Validators.required],
       description: ["", Validators.required],
-      priority: [Priority.Low, Validators.required],
-      projectName: ["", Validators.required],
-      owner: ["", Validators.required],
+      priority: ["", Validators.required],
+      functionality: ["", Validators.required],
       status: [WorkStatus.Todo, Validators.required],
       addedDate: addedDateControl,
       startDate: [""],
       endDate: [""],
-      timeSpent: [""],
-      functionality: ["", Validators.required],
     });
+   
 
-    this.taskService.getTasks().subscribe(
-      (tasks: TaskInterface[]) => {
-        this.tasks = tasks;
-      },
-      (error) => console.log(error)
-    );
-
-    this.functionalityService.getFunctionalities().subscribe(
-      (functionalities: FunctionalityInterface[]) => {
-        this.functionalityList = functionalities;
-      },
-      (error) => console.log(error)
-    );
+  
   }
+
 
   addTask() {
     const currentDate = new Date().toISOString().split("T")[0];
@@ -77,6 +69,7 @@ export class TaskFormComponent implements OnInit {
 
     const addedDateValue =
       addedDateControl.value !== null ? addedDateControl.value : currentDate;
+      console.log(this.sf)
 
     const selectedFunctionalityId = this.taskForm.value.functionality;
 

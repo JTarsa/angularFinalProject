@@ -10,7 +10,6 @@ import {
   Validators,
 } from "@angular/forms";
 import { WorkStatus } from "src/app/enums/workStatus.enum";
-import { Priority } from "src/app/enums/priority.enum";
 
 @Component({
   selector: "app-functionality-edit",
@@ -21,7 +20,6 @@ export class FunctionalityEditComponent implements OnInit {
   functionality: FunctionalityInterface | undefined;
   functionalityForm!: FormGroup;
   workStatusValues = Object.values(WorkStatus);
-  priorityValues = Object.values(Priority);
   functionalityId!: string;
   functionalityOptions!: FunctionalityInterface;
 

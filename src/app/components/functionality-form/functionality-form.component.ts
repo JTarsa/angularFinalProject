@@ -10,7 +10,7 @@ import {
   Validators,
 } from "@angular/forms";
 import { WorkStatus } from "src/app/enums/workStatus.enum";
-import { Priority } from "src/app/enums/priority.enum";
+
 
 @Component({
   selector: "app-functionality-form",
@@ -21,7 +21,7 @@ export class FunctionalityFormComponent implements OnInit {
   functionalities: FunctionalityInterface[] = [];
   functionalityForm!: FormGroup;
   workStatusValues = Object.values(WorkStatus);
-  priorityValues = Object.values(Priority);
+
 
   constructor(
     private formBuilder: FormBuilder,
@@ -39,7 +39,7 @@ export class FunctionalityFormComponent implements OnInit {
     this.functionalityForm = this.formBuilder.group({
       name: ["", Validators.required],
       description: ["", Validators.required],
-      priority: [Priority.Low, Validators.required],
+      priority: ["", Validators.required],
       projectName: ["", Validators.required],
       owner: ["", Validators.required],
       status: [WorkStatus.Todo, Validators.required],

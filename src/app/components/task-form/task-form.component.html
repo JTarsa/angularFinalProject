@@ -1,91 +1,87 @@
-<form class="task-form">
-  <div>
-    <h1>Create a new task for this functionality</h1>
-    <div class="form-group">
-      <div class="input-group">
-        <label for="title">Title</label>
-        <input
-          type="text"
-          id="title"
-          name="title"
-          required
-          class="form-control"
-          [(ngModel)]="taskForm.value.name"
-        />
-      </div>
-      <div class="input-group">
-        <label for="description">Description</label>
-        <input
-          type="text"
-          id="description"
-          name="description"
-          required
-          class="form-control"
-          [(ngModel)]="taskForm.value.description"
-        />
-      </div>
-      <div class="input-group">
-        <label for="priority">Priority</label>
-        <select
-          id="priority"
-          name="priority"
-          required
-          class="form-control"
-          [(ngModel)]="taskForm.value.priority"
+<form [formGroup]="taskForm" (ngSubmit)="addTask()">
+  <div class="container">
+    <h1 class="form-title"> Create New Task</h1>
+    <div class="form-content">
+      <div class="form-group">
+        <label for="name" class="form-label">Name</label>
+        <input 
+        type="text"
+        id="name"
+        name="name"
+        formControlName="name"
+        required
+        class="form-input"
         >
-          <option value="High">High</option>
-          <option value="Medium">Medium</option>
-          <option value="Low">Low</option>
+      </div>
+      <div class="form-group">
+        <label for="description" class="form-label">Description</label>
+        <input 
+        type="text"
+        id="description"
+        name="description"
+        formControlName="description"
+        required
+        class="form-input"
+        >
+      </div>
+      <div class="form-group">
+        <label for="priority" class="form-label">Priority</label>
+        <input 
+        type="text"
+        id="priority"
+        name="priority"
+        formControlName="priority"
+        required
+        class="form-input"
+        >
+      </div>
+
+
+      <div>
+        <label for="functionality" class="form-label" >Functionality</label>
+        <select [(ngModel)]="sf" formControlName="functionality">
+          <option *ngFor="let functionality of functionalityList" [value]="functionality.ID">{{functionality.name}}</option>
         </select>
       </div>
-      <div class="input-group">
-        <label for="status">Status</label>
-        <select id="status" name="status" required formControlName="status">
-          <option *ngFor="let value of workStatusValues" [value]="value">
-            {{ value }}
+
+      
+      <div class="form-group">
+        <label for="status" class="form-label">Status</label>
+        <select
+          id="status"
+          name="status"
+          formControlName="status"
+          required
+          class="form-select"
+        >
+          <option *ngFor="let status of workStatusValues" [value]="status">
+            {{ status }}
           </option>
         </select>
       </div>
-      <div class="input-group">
-        <label for="functionality">Functionality</label>
-        <select
-          id="functionality"
-          name="functionality"
-          required
-          class="form-control"
-          [(ngModel)]="taskForm.value.functionality"
+      <div class="form-group">
+        <label for="startDate" class="form-label">Start Date</label>
+        <input 
+        type="date"
+        id="startDate"
+        name="startDate"
+        formControlName="startDate"
+        required
+        class="form-input"
         >
-          <option
-            *ngFor="let functionality of functionalityList"
-            [value]="functionality.ID"
-          >
-            {{ functionality.name }}
-          </option>
-        </select>
       </div>
-      <div class="input-group">
-        <label for="startDate">Start date</label>
-        <input
-          type="date"
-          id="startDate"
-          name="startDate"
-          required
-          class="form-control"
-          [(ngModel)]="taskForm.value.startDate"
-        />
+      <div class="form-group">
+        <label for="endDate" class="form-label">End Date</label>
+        <input 
+        type="date"
+        id="endDate"
+        name="endDate"
+        formControlName="endDate"
+        required
+        class="form-input"
+        >
       </div>
-      <div class="input-group">
-        <label for="endDate">End date</label>
-        <input
-          type="date"
-          id="endDate"
-          name="endDate"
-          required
-          class="form-control"
-          [(ngModel)]="taskForm.value.endDate"
-        />
-      </div>
-      <button class="btn-create-task" (click)="addTask()">Create task</button>
     </div>
   </div>
+  <button >Add</button>
 </form>

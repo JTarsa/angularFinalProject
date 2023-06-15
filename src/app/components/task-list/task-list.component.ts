@@ -39,6 +39,7 @@ export class TaskListComponent implements OnInit {
         this.functionalityID = '';
       }
     });
+    console.log(this.tasks)
   }
 
   getSingleFunctionality(ID: string) {
